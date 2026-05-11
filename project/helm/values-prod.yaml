@@ -7,7 +7,7 @@ replicaCount: 5
 image:
   repository: techtrends
   tag: latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 containerPort: 3111
 
