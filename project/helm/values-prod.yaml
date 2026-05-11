@@ -1,0 +1,32 @@
+# Production environment values for techtrends Helm chart
+namespace:
+  name: prod
+
+replicaCount: 5
+
+image:
+  repository: techtrends
+  tag: latest
+  pullPolicy: Always
+
+containerPort: 3111
+
+service:
+  type: ClusterIP
+  port: 7111
+  targetPort: 3111
+  protocol: TCP
+
+resources:
+  requests:
+    cpu: "350m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+
+livenessProbe:
+  path: /healthz
+
+readinessProbe:
+  path: /healthz

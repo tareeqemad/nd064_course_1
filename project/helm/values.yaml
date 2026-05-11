@@ -1,0 +1,32 @@
+# Default values for techtrends Helm chart
+namespace:
+  name: sandbox
+
+replicaCount: 1
+
+image:
+  repository: techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 3111
+
+service:
+  type: ClusterIP
+  port: 4111
+  targetPort: 3111
+  protocol: TCP
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "64Mi"
+  limits:
+    cpu: "500m"
+    memory: "128Mi"
+
+livenessProbe:
+  path: /healthz
+
+readinessProbe:
+  path: /healthz
